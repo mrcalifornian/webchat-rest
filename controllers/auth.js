@@ -2,6 +2,7 @@ const User = require("../models/user");
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+require('dotenv').config()
 
 exports.signup = async (req, res, next) => {
 
@@ -71,7 +72,7 @@ exports.login = async (req, res, next) => {
                 email: loadedUser.email,
                 userID: loadedUser._id.toString()
             },
-            'mysupersecretisnothere',
+            process.env.JWT,
             { expiresIn: '1h' }
         );
 

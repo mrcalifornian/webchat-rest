@@ -4,13 +4,14 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const multer = require('multer');
 const cors = require('cors');
+require('dotenv').config()
 
 const authMiddleware = require('./middleware/is-auth');
 const feedRoutes = require('./routes/feed');
 const authRoutes = require('./routes/auth');
 
 const PORT = 8080;
-const DBLINK = "mongodb+srv://gptbot:54rWTc0Tk3UwzTbs@gptprobot.dvsfzce.mongodb.net/feed?retryWrites=true&w=majority";
+const DBLINK = process.env.MONGODB;
 
 const app = express();
 
